@@ -105,12 +105,12 @@ class RemoteFeedLoaderTests: XCTestCase {
     //MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "defaultURL.com")!,
-                         file: StaticString = #filePath,
+                         file: StaticString = #file,
                          line: UInt = #line) -> (sut: RemoteFeedLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteFeedLoader(url: url, client: client)
-        trackForMemoryLeaks(sut, file: #filePath, line: #line)
-        trackForMemoryLeaks(client, file: #filePath, line: #line)
+        trackForMemoryLeaks(sut, file: #file, line: #line)
+        trackForMemoryLeaks(client, file: #file, line: #line)
         return (sut, client)
     }
     
@@ -146,7 +146,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     private func expect(_ sut: RemoteFeedLoader,
                         toCompleteWithResult expectedResult: RemoteFeedLoader.Result,
                         when action: () -> Void,
-                        file: StaticString = #filePath,
+                        file: StaticString = #file,
                         line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
